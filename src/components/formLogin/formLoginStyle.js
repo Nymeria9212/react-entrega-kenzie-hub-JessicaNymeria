@@ -7,8 +7,9 @@ height:24.75rem;
 width: 90%;
 border: solid 2px var(--grey-3);
 background-color: var(--grey-3);
-border-radius: var(--radius-1);
+border-radius: var(--radius-2);
 justify-content: space-evenly;
+margin-bottom: 3rem;
 label{
     padding: 0 1rem;
 }

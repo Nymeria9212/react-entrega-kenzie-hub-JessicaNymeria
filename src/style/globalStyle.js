@@ -52,7 +52,7 @@ table {
 body{
     box-sizing: border-box;
 	height: 100vh;
-	width: 100vw;
+	max-width: 100vw;
 	font-family: var(--font-family);
 }
 :root{
@@ -66,6 +66,7 @@ body{
 --grey-1:#868E96;
 --grey-0:#F8F9FA;
 
+--title:1.75rem;
 --title-1-3:1rem;
 --text-bold: bold;
 --text-italic: italic 0.75rem;

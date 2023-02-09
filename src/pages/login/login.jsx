@@ -1,11 +1,13 @@
 import { FormLogin } from "../../components/formLogin/formLogin";
-import { Header } from "../../components/Header/header";
 import { PageLogin } from "./loginStyle";
+import logoKenzie from "../../assets/Logo.svg";
 
 export function Login() {
   return (
     <PageLogin>
-      <Header />
+      <header>
+        <img src={logoKenzie} alt="" />
+      </header>
       <FormLogin />
     </PageLogin>
   );

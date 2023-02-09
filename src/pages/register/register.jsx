@@ -1,13 +1,18 @@
 import { Link } from "react-router-dom";
 import { FormRegister } from "../../components/formRegister/formRegister";
-import { Header } from "../../components/Header/header";
 import { PageRegister } from "./registerStyle";
-
+import logoKenzie from "../../assets/Logo.svg";
 export function Register() {
   return (
     <PageRegister>
-      <Header Children={<Link to={"/"}>Voltar</Link>} />
-
+      <header>
+        <div>
+          <img src={logoKenzie} alt="Logomarca KenzieHub" />
+          <Link className="backPage" to={"/"}>
+            Voltar
+          </Link>
+        </div>
+      </header>
       <FormRegister />
     </PageRegister>
   );

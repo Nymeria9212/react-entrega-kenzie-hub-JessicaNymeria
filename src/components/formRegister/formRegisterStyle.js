@@ -5,9 +5,11 @@ display: flex;
 flex-direction: column;
 justify-content: space-around;
 width: 90%;
-height: 50rem;
+height: 52rem;
 padding-top: 2rem;
 background-color:var(--grey-3);
+border-radius: var(--radius-1);
+margin-bottom: 3rem;
 h1,p{
     text-align: center;
 }
@@ -28,9 +30,23 @@ input, select{
     height: 3rem;
     border: none;
     border-radius: var(--radius-1);
+    font-family: var(--font-family);
+    
 }
 
+.btnRegister{
+    background-color: var(--color-primary-negative);
+    height: 3rem;
+    width: 90%;
+    color: var(--grey-1);
+    align-self:center;
+    border-radius: var(--radius-1);
+    margin-bottom: 2rem;
+    margin-top: 1rem;
+    border: none;
+    font-family: var(--font-family);
+}
 @media(min-width:700px){
-    width: 23.125rem;
+    width: 23.063rem;
 }
 `
