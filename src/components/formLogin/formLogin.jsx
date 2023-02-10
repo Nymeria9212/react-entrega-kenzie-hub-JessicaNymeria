@@ -60,7 +60,7 @@ export function FormLogin() {
           id="name"
           {...register("email")}
         />
-        {errors.email?.message}
+        <p>{errors.email?.message}</p>
 
         <label htmlFor="password">Senha</label>
         <div className="input-password">
@@ -70,12 +70,11 @@ export function FormLogin() {
             id="password"
             {...register("password")}
           />
-          {errors.password?.message}
           <button onClick={viewPassword}>
             <ImEye />
           </button>
         </div>
-
+        <p>{errors.password?.message}</p>
         <Link className="link" to={"/register"}>
           Ainda não possui uma conta?
         </Link>

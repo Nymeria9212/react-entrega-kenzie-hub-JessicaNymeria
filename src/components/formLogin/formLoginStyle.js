@@ -71,6 +71,9 @@ button{
     font-weight: var(--text-bold);
     
 }
+p{
+    padding-left: 1rem;
+}
 .input-password>button{
     width: 10%;
     background-color: var(--grey-2);
