@@ -57,7 +57,7 @@ body{
 }
 :root{
 
-	--color-primary:#FF577F;
+--color-primary:#FF577F;
 --color-primary-focus:#FF427F;
 --color-primary-negative: #59323F;
 --grey-4:#121214;
@@ -68,7 +68,8 @@ body{
 
 --title:1.75rem;
 --title-1-3:1rem;
---text-bold: bold;
+--text-bold: 600;
+--text-bold-2:500;
 --text-italic: italic 0.75rem;
 --text-regular: 0.75rem;
 --font-family: 'Inter', sans-serif;

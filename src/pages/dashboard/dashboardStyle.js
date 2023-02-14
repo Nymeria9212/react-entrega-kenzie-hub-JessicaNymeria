@@ -8,7 +8,7 @@ flex-direction: column;
 color:var(--grey-0);
 
 
-header{
+nav{
     display: flex;
     flex-direction: row;
     min-height: 6rem;
@@ -17,7 +17,7 @@ header{
     border-bottom: 2px solid var(--grey-3);
 
 }
-aside{
+header{
    
     height: 7.375rem;
     border-bottom: 2px solid var(--grey-3);
@@ -34,21 +34,20 @@ main{
    align-items: center;
    
 }
-main>div{
+.div-center{
     display: flex;
     flex-direction: column;
     gap: 2rem;
     margin-top: 4rem;
     width: 90%;
 }
-h2{
-    font-size: var(--title-1-3);
+.div_btn-add-tech{
+    display: flex;
+    justify-content: space-between;
 }
-p{
-    font-size: var(--text-regular);
-    padding-left: 0.35rem;
-}
-button{
+
+
+.logout{
     height: 2rem;
     width: 3.469rem;
     border: none;
@@ -61,7 +60,7 @@ button{
     h2{
         font-size: var(--title);
     }
-    main>div{
+    .div-center{
         width: 50%;
     }
 }

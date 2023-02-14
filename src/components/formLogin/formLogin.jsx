@@ -1,12 +1,11 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { ImEye } from "react-icons/im";
 import { FormStyle } from "./formLoginStyle";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import { api } from "../../services/api";
-import { toast } from "react-toastify";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { KenzieHubContext } from "../../Contexts";
 
 const formSchema = yup.object({
   email: yup.string().email("Email inválido").required("Email obrigatório"),
@@ -14,7 +13,8 @@ const formSchema = yup.object({
 });
 
 export function FormLogin() {
-  const useNavegate = useNavigate();
+  const { onSubmitForm } = useContext(KenzieHubContext);
+
   const [passw, setPassw] = useState(true);
 
   function viewPassword(event) {
@@ -29,25 +29,10 @@ export function FormLogin() {
   const {
     register,
     handleSubmit,
-    reset,
     formState: { errors },
   } = useForm({
     resolver: yupResolver(formSchema),
   });
-
-  const onSubmitForm = async (data) => {
-    try {
-      const response = await api.post("/sessions", data);
-      toast.success("Usuario logado com sucesso");
-      const token = response.data.token;
-      localStorage.setItem("@user", token);
-      useNavegate("/dashboard");
-    } catch (error) {
-      toast.error("Ops, algo deu errado! Tente novamente!");
-      console.error(error);
-      reset();
-    }
-  };
 
   return (
     <FormStyle onSubmit={handleSubmit(onSubmitForm)}>
