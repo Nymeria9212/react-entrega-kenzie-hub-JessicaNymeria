@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const DashboardStyle = styled.div`
 background-color: var(--grey-4);
-height: 100vh;
+
 display: flex;
 flex-direction: column;
 color:var(--grey-0);
@@ -28,7 +28,7 @@ header{
     justify-content: space-around;
 }
 main{
-    height: 100vh;
+   
     display: flex;
     flex-direction: column;
    align-items: center;
@@ -40,13 +40,24 @@ main{
     gap: 2rem;
     margin-top: 4rem;
     width: 90%;
+    height:100%;
 }
 .div_btn-add-tech{
     display: flex;
     justify-content: space-between;
 }
 
-
+ul{
+    background-color: var(--grey-3);
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 0;
+    border-radius: var(--radius-1);
+}
 .logout{
     height: 2rem;
     width: 3.469rem;

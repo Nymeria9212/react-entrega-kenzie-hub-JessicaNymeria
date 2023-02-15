@@ -1,11 +1,18 @@
 import { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { KenzieHubContext } from "../../Contexts";
+import { TechsContext } from "../../Contexts/TechsContext";
 import { ModalStyle } from "./styleModal";
 
 export function ModalAddTech() {
   const { register, handleSubmit } = useForm();
   const { setModal } = useContext(KenzieHubContext);
+  const { onSubmitTech } = useContext(TechsContext);
+
+  function onSubmit(data) {
+    onSubmitTech(data);
+    setModal(false);
+  }
 
   return (
     <ModalStyle>
@@ -20,15 +27,15 @@ export function ModalAddTech() {
             X
           </button>
         </div>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit(onSubmit)}>
           <label htmlFor="title">Nome</label>
           <input id="title" type="text" {...register("title")} />
 
           <label htmlFor="status">Selecionar Status</label>
           <select id="status" name="status" {...register("status")}>
-            <option value="iniciante">Iniciante</option>
-            <option value="intermediário">Intermediário</option>
-            <option value="avançado">Avançado</option>
+            <option value="Iniciante">Iniciante</option>
+            <option value="Intermediário">Intermediário</option>
+            <option value="Avançado">Avançado</option>
           </select>
           <button className="btnRegisterTech">Cadastrar tecnologia</button>
         </form>

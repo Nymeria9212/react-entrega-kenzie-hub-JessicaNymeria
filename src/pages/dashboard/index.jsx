@@ -5,10 +5,14 @@ import { useContext } from "react";
 import { toast } from "react-toastify";
 import { KenzieHubContext } from "../../Contexts";
 import { ModalAddTech } from "../../components/Modal";
+import { TechCard } from "../../components/TechCardUser/techCard";
+import { TechsContext } from "../../Contexts/TechsContext";
+import { ModalEditDelete } from "../../components/ModalEditDelete";
 
 export function DashBoard() {
   const { user, setModal, modal } = useContext(KenzieHubContext);
   const navegate = useNavigate();
+  const { listTechs, modalDelete } = useContext(TechsContext);
   function exitPage() {
     navegate("/");
     localStorage.clear();
@@ -39,10 +43,20 @@ export function DashBoard() {
               +
             </button>
           </div>
-          <ul></ul>
+
+          {listTechs.length == 0 ? (
+            <p>Você não tem nenhuma tecnologia cadastrada ainda</p>
+          ) : (
+            <ul>
+              {listTechs.map((techno) => (
+                <TechCard key={techno.id} tech={techno} />
+              ))}
+            </ul>
+          )}
         </div>
       </main>
       {modal ? <ModalAddTech /> : null}
+      {modalDelete ? <ModalEditDelete /> : null}
     </DashboardStyle>
   );
 }

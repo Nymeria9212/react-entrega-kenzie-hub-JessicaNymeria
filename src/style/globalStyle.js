@@ -51,7 +51,7 @@ table {
 }
 body{
     box-sizing: border-box;
-	height: 100vh;
+	
 	max-width: 100vw;
 	font-family: var(--font-family);
 }

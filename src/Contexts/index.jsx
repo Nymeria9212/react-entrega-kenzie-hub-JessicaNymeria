@@ -23,6 +23,7 @@ export function KenzieHubProvider({ children }) {
         try {
           const response = await api.get("/profile", { headers });
           setUser(response.data);
+
           navegate("/dashboard");
         } catch (error) {
           console.log(error);
