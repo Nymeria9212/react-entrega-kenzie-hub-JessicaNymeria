@@ -25,13 +25,16 @@ header{
     flex-direction: row;
     flex-wrap: wrap;
     align-items: center;
+    padding: 0 1rem;
     justify-content: space-around;
+    gap: 1rem;
 }
 main{
    
     display: flex;
     flex-direction: column;
    align-items: center;
+   height: 100vh;
    
 }
 .div-center{
@@ -45,6 +48,19 @@ main{
 .div_btn-add-tech{
     display: flex;
     justify-content: space-between;
+}
+.addButton{
+    background-color: var(--grey-3);
+    color:var(--grey-0);
+    font-weight: var(--title-bold);
+    border: none;
+    font-size: var(--title);
+    height: 2rem;
+    width: 2rem;
+    border-radius: 4px;
+}
+.addButton:hover{
+    background-color: var(--grey-2);
 }
 
 ul{
@@ -62,10 +78,13 @@ ul{
     height: 2rem;
     width: 3.469rem;
     border: none;
-    background-color: var(--grey-1);
+    background-color: var(--grey-2);
     color: var(--grey-0);
     border-radius: var(--radius-1);
     font-family: var(--font-family);
+}
+.logout:hover{
+    background-color: var(--grey-1);
 }
 @media(min-width:700px){
     h2{

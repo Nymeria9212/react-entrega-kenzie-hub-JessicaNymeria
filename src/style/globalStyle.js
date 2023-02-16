@@ -54,6 +54,10 @@ body{
 	
 	max-width: 100vw;
 	font-family: var(--font-family);
+	
+}
+button{
+	cursor: pointer;
 }
 :root{
 

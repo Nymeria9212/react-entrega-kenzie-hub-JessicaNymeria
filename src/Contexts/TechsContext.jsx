@@ -1,32 +1,14 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useContext, useState } from "react";
 import { toast } from "react-toastify";
+import { KenzieHubContext } from ".";
 import { api } from "../services/api";
 
 export const TechsContext = createContext({});
 
 export const TechsProvider = ({ children }) => {
-  const [listTechs, setListTechs] = useState([]);
+  const { setListTechs, listTechs } = useContext(KenzieHubContext);
   const [modalDelete, setModalDelete] = useState(false);
-
-  useEffect(() => {
-    const token = localStorage.getItem("@user");
-    if (token) {
-      const techsLoading = async () => {
-        try {
-          const response = await api.get("/profile", {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          });
-
-          setListTechs(response.data.techs);
-        } catch (error) {
-          console.log(error);
-        }
-      };
-      techsLoading();
-    }
-  }, []);
+  const [deleteId, setDeleteId] = useState("");
 
   const onSubmitTech = async (data) => {
     try {
@@ -34,7 +16,7 @@ export const TechsProvider = ({ children }) => {
       const response = await api.post("/users/techs ", data, {
         headers: { Authorization: `Bearer ${token}` },
       });
-      setListTechs([...listTechs, response.data.techs]);
+      setListTechs([...listTechs, response.data]);
       toast.success("Tecnologia cadastrada com sucesso");
     } catch (error) {
       console.log(error);
@@ -50,13 +32,38 @@ export const TechsProvider = ({ children }) => {
       });
       const newsTechs = listTechs.filter((tech) => tech.id !== id);
       setListTechs(newsTechs);
+      toast.success("Tecnologia excluída com sucesso");
     } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const upgrade = async (dataForm, id) => {
+    try {
+      const token = localStorage.getItem("@user");
+      const response = await api.put(`/users/techs/${id}`, dataForm, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      const newTech = listTechs.filter((tech) => tech.id !== id);
+      setListTechs([response.data, ...newTech]);
+      toast.success("Tecnologia editada com sucesso");
+    } catch (error) {
+      toast.error("Algo deu errado");
       console.log(error);
     }
   };
   return (
     <TechsContext.Provider
-      value={{ onSubmitTech, listTechs, modalDelete, setModalDelete }}
+      value={{
+        onSubmitTech,
+        listTechs,
+        modalDelete,
+        setModalDelete,
+        setDeleteId,
+        deleteId,
+        remove,
+        upgrade,
+      }}
     >
       {children}
     </TechsContext.Provider>

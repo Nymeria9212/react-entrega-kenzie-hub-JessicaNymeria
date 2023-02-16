@@ -11,6 +11,7 @@ export function KenzieHubProvider({ children }) {
   const { reset } = useForm();
   const navegate = useNavigate();
   const [modal, setModal] = useState(false);
+  const [listTechs, setListTechs] = useState([]);
 
   useEffect(() => {
     const token = localStorage.getItem("@user");
@@ -23,7 +24,7 @@ export function KenzieHubProvider({ children }) {
         try {
           const response = await api.get("/profile", { headers });
           setUser(response.data);
-
+          setListTechs(response.data.techs);
           navegate("/dashboard");
         } catch (error) {
           console.log(error);
@@ -48,7 +49,9 @@ export function KenzieHubProvider({ children }) {
   };
 
   return (
-    <KenzieHubContext.Provider value={{ user, onSubmitForm, setModal, modal }}>
+    <KenzieHubContext.Provider
+      value={{ user, onSubmitForm, setModal, modal, setListTechs, listTechs }}
+    >
       {children}
     </KenzieHubContext.Provider>
   );

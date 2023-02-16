@@ -13,6 +13,7 @@ background-color: rgba(00,00,00,0.5);
     .container{
         background-color: var(--grey-3);
         width: 23.063rem;
+        max-width: 90%;
         height: 21.375rem;
         border-radius: var(--radius-1);
         display: flex;

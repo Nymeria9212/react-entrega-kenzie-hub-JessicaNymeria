@@ -36,6 +36,7 @@ export function DashBoard() {
           <div className="div_btn-add-tech">
             <h2>Tecnologias</h2>
             <button
+              className="addButton"
               onClick={() => {
                 setModal(true);
               }}
