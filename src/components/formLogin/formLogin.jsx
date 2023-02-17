@@ -5,7 +5,7 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { useContext, useState } from "react";
-import { KenzieHubContext } from "../../Contexts";
+import { UserContext } from "../../Contexts/UserContext";
 
 const formSchema = yup.object({
   email: yup.string().email("Email inválido").required("Email obrigatório"),
@@ -13,7 +13,7 @@ const formSchema = yup.object({
 });
 
 export function FormLogin() {
-  const { onSubmitForm } = useContext(KenzieHubContext);
+  const { onSubmitForm } = useContext(UserContext);
 
   const [passw, setPassw] = useState(true);
 

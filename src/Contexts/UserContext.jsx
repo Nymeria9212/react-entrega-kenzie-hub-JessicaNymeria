@@ -4,9 +4,9 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { api } from "../services/api";
 
-export const KenzieHubContext = createContext({});
+export const UserContext = createContext({});
 
-export function KenzieHubProvider({ children }) {
+export function UserProvider({ children }) {
   const [user, setUser] = useState(null);
   const { reset } = useForm();
   const navegate = useNavigate();
@@ -47,12 +47,31 @@ export function KenzieHubProvider({ children }) {
       reset();
     }
   };
+  const onSubmitFunction = async (data) => {
+    try {
+      const response = await api.post("/users", data);
+      toast.success("Usuario cadastrado com sucesso");
+      useNavegate("/");
+    } catch (error) {
+      toast.error("Ops, algo deu errado!");
+      console.error(error);
+      reset();
+    }
+  };
 
   return (
-    <KenzieHubContext.Provider
-      value={{ user, onSubmitForm, setModal, modal, setListTechs, listTechs }}
+    <UserContext.Provider
+      value={{
+        user,
+        onSubmitForm,
+        setModal,
+        modal,
+        setListTechs,
+        listTechs,
+        onSubmitFunction,
+      }}
     >
       {children}
-    </KenzieHubContext.Provider>
+    </UserContext.Provider>
   );
 }

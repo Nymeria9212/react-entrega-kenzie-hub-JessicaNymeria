@@ -1,10 +1,10 @@
 import { useContext, useEffect } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
-import { KenzieHubContext } from "../Contexts";
+import { UserContext } from "../Contexts/UserContext";
 
 export function ProtectRoute() {
   const navegate = useNavigate();
-  const { user } = useContext(KenzieHubContext);
+  const { user } = useContext(UserContext);
 
   useEffect(() => {
     if (!user) {

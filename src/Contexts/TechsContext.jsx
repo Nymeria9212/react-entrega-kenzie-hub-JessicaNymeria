@@ -1,12 +1,12 @@
 import { createContext, useContext, useState } from "react";
 import { toast } from "react-toastify";
-import { KenzieHubContext } from ".";
+import { UserContext } from "./UserContext";
 import { api } from "../services/api";
 
 export const TechsContext = createContext({});
 
 export const TechsProvider = ({ children }) => {
-  const { setListTechs, listTechs } = useContext(KenzieHubContext);
+  const { setListTechs, listTechs } = useContext(UserContext);
   const [modalDelete, setModalDelete] = useState(false);
   const [deleteId, setDeleteId] = useState("");
 

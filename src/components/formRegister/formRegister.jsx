@@ -1,10 +1,10 @@
-import { Link, useNavigate } from "react-router-dom";
 import { RegisterStyle } from "./formRegisterStyle";
 import * as yup from "yup";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { api } from "../../services/api";
-import { toast } from "react-toastify";
+
+import { useContext } from "react";
+import { UserContext } from "../../Contexts/UserContext";
 
 const formSchema = yup
   .object({
@@ -31,25 +31,11 @@ export function FormRegister() {
   const {
     register,
     handleSubmit,
-    reset,
     formState: { errors },
   } = useForm({
     resolver: yupResolver(formSchema),
   });
-
-  const useNavegate = useNavigate();
-
-  const onSubmitFunction = async (data) => {
-    try {
-      const response = await api.post("/users", data);
-      toast.success("Usuario cadastrado com sucesso");
-      useNavegate("/");
-    } catch (error) {
-      toast.error("Ops, algo deu errado!");
-      console.error(error);
-      reset();
-    }
-  };
+  const { onSubmitFunction } = useContext(UserContext);
 
   return (
     <RegisterStyle onSubmit={handleSubmit(onSubmitFunction)}>

@@ -3,14 +3,14 @@ import { useNavigate } from "react-router-dom";
 import { DashboardStyle } from "./dashboardStyle";
 import { useContext } from "react";
 import { toast } from "react-toastify";
-import { KenzieHubContext } from "../../Contexts";
+import { UserContext } from "../../Contexts/UserContext";
 import { ModalAddTech } from "../../components/Modal";
 import { TechCard } from "../../components/TechCardUser/techCard";
 import { TechsContext } from "../../Contexts/TechsContext";
 import { ModalEditDelete } from "../../components/ModalEditDelete";
 
 export function DashBoard() {
-  const { user, setModal, modal } = useContext(KenzieHubContext);
+  const { user, setModal, modal } = useContext(UserContext);
   const navegate = useNavigate();
   const { listTechs, modalDelete } = useContext(TechsContext);
   function exitPage() {

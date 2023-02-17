@@ -1,5 +1,10 @@
-import { KenzieHubProvider } from "../Contexts";
+import { UserProvider } from "../Contexts/UserContext";
+import { TechsProvider } from "../Contexts/TechsContext";
 
 export function Provider({ children }) {
-  return <KenzieHubProvider>{children}</KenzieHubProvider>;
+  return (
+    <UserProvider>
+      <TechsProvider>{children}</TechsProvider>
+    </UserProvider>
+  );
 }

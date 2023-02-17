@@ -1,6 +1,5 @@
 import { useContext } from "react";
 import { TechsContext } from "../../Contexts/TechsContext";
-import { ModalEditDelete } from "../ModalEditDelete";
 import { CardTech } from "./techCardStyle";
 
 export function TechCard({ tech }) {

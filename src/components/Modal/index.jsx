@@ -1,12 +1,12 @@
 import { useContext } from "react";
 import { useForm } from "react-hook-form";
-import { KenzieHubContext } from "../../Contexts";
+import { UserContext } from "../../Contexts/UserContext";
 import { TechsContext } from "../../Contexts/TechsContext";
 import { ModalStyle } from "./styleModal";
 
 export function ModalAddTech() {
   const { register, handleSubmit } = useForm();
-  const { setModal } = useContext(KenzieHubContext);
+  const { setModal } = useContext(UserContext);
   const { onSubmitTech } = useContext(TechsContext);
 
   function onSubmit(data) {
